@@ -1,4 +1,4 @@
-# Cocktail Api
+# Cocktail App
 
 An android App used to show lists of Cocktail and recipes for making them.
 
