@@ -6,7 +6,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 
-public class Drinks {
+public class DrinksResponse {
 
     @SerializedName("drinks")
     @Expose
@@ -16,14 +16,14 @@ public class Drinks {
      * No args constructor for use in serialization
      * 
      */
-    public Drinks() {
+    public DrinksResponse() {
     }
 
     /**
      * 
      * @param drinks
      */
-    public Drinks(List<Drink> drinks) {
+    public DrinksResponse(List<Drink> drinks) {
         super();
         this.drinks = drinks;
     }

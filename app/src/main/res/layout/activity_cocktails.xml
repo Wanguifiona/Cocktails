@@ -2,6 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/cocktailsTextView"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="83dp" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
     <TextView
         android:id="@+id/cocktailsTextView"
         android:layout_width="wrap_content"
@@ -12,13 +29,12 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="102dp"
         android:text="Cocktails Recipes" />
-
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/errorTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/cocktailsTextView"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="83dp" />
+        android:layout_centerInParent="true"
+        android:layout_margin="16dp"
+        android:visibility="gone" />
+
 </RelativeLayout>
