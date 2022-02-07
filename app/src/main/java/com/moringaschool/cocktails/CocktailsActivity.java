@@ -1,6 +1,8 @@
 package com.moringaschool.cocktails;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +15,14 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.moringaschool.cocktails.adapters.CocktailListAdapter;
 import com.moringaschool.cocktails.models.Drink;
 import com.moringaschool.cocktails.models.DrinksResponse;
 import com.moringaschool.cocktails.network.CocktailsApi;
 import com.moringaschool.cocktails.network.CocktailsClient;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -30,8 +35,10 @@ public class CocktailsActivity extends AppCompatActivity {
     private static final String TAG = CocktailsActivity.class.getSimpleName();
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
-    @BindView(R.id.cocktailsTextView) TextView mCocktailsTextView;
-    @BindView(R.id.listView) ListView mListView;
+    @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
+
+    private CocktailListAdapter mAdapter;
+    public List<Drink> cocktails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,46 +46,33 @@ public class CocktailsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cocktails);
         ButterKnife.bind(this);
 
+        cocktails = new ArrayList<>();
 
-
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                String cocktail = ((TextView)view).getText().toString();
-                Toast.makeText(CocktailsActivity.this, cocktail, Toast.LENGTH_LONG).show();
-            }
-        });
 
         Intent intent = getIntent();
         String cocktail = intent.getStringExtra("cocktails");
-        mCocktailsTextView.setText("Here are the cocktail recipes for: " + cocktail);
-
 
 
         CocktailsApi client = CocktailsClient.getClient();
-        Call<DrinksResponse> call = client.getCocktails();
+        Call<DrinksResponse> call = client.getDrinks();
 
         call.enqueue(new Callback<DrinksResponse>() {
             @Override
             public void onResponse(Call<DrinksResponse> call, Response<DrinksResponse> response) {
                 hideProgressBar();
                 if(response.isSuccessful()){
-                    List<Drink> cocktailsList= response.body().getDrinks();
-                    String[] cocktails = new String[cocktailsList.size()];
-                    String[] ingredients = new String[cocktailsList.size()];
-
-                    for (int i = 0; i < cocktails.length; i++) {
-                        cocktails[i] = cocktailsList.get(i).getStrDrink();
+                    List<Drink> allDrinks = response.body().getDrinks();
+                    for(Drink drink : allDrinks){
+                        Log.d(TAG, "onResponse: " + drink.getStrDrink());
                     }
+                    cocktails.addAll(allDrinks);
 
-                    ArrayAdapter adapter = new MyCocktailsArrayAdapter(CocktailsActivity.this, android.R.layout.simple_list_item_1, cocktails, ingredients);
-                    mListView.setAdapter(adapter);
-                    showCoktails();
+                    startRecyclerView(cocktails);
+                    showCocktails();
                 } else {
                     showUnsuccessfulMessage();
                 }
             }
-
             @Override
             public void onFailure(Call<DrinksResponse> call, Throwable t) {
                 Log.e(TAG, "onFailure: ",t );
@@ -88,6 +82,14 @@ public class CocktailsActivity extends AppCompatActivity {
 
         });
     }
+
+    private void startRecyclerView(List<Drink> cocktails) {
+            CocktailListAdapter cocktailListAdapter = new CocktailListAdapter(CocktailsActivity.this, cocktails);
+            mRecyclerView.setAdapter(cocktailListAdapter);
+            mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    }
+
     private void showFailureMessage() {
         mErrorTextView.setText("Something went wrong. Please check your Internet connection and try again later");
         mErrorTextView.setVisibility(View.VISIBLE);
@@ -98,9 +100,8 @@ public class CocktailsActivity extends AppCompatActivity {
         mErrorTextView.setVisibility(View.VISIBLE);
     }
 
-    private void showCoktails() {
-        mListView.setVisibility(View.VISIBLE);
-        mCocktailsTextView.setVisibility(View.VISIBLE);
+    private void showCocktails() {
+        mRecyclerView.setVisibility(View.VISIBLE);
     }
 
     private void hideProgressBar() {

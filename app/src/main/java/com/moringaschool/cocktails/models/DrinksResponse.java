@@ -10,7 +10,7 @@ public class DrinksResponse {
 
     @SerializedName("drinks")
     @Expose
-    private List<Drink> drinks = null;
+    private List<Drink> drinks ;
 
     /**
      * No args constructor for use in serialization

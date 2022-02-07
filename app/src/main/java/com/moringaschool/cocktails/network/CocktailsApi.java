@@ -10,7 +10,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface CocktailsApi {
-    @GET("drinks")
-    Call<DrinksResponse> getCocktails();
+    @GET("search.php?f=a")
+    Call<DrinksResponse> getDrinks();
 
 }
