@@ -29,8 +29,8 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="One Cuisine Type"
-            android:id="@+id/categoryTextView"
+            android:text="Cocktail"
+            android:id="@+id/typeTextView"
             android:textStyle="italic"/>
 
         <RelativeLayout
@@ -41,10 +41,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Rating"
-                android:id="@+id/ratingTextView"
+                android:id="@+id/categoryTextView"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/teal_700"/>
+
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

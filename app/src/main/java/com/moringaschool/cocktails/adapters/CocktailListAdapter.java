@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.moringaschool.cocktails.R;
 import com.moringaschool.cocktails.models.Drink;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -47,8 +48,8 @@ public class CocktailListAdapter extends RecyclerView.Adapter<CocktailListAdapte
     class myHolder extends RecyclerView.ViewHolder{
         @BindView(R.id.cocktailImageView) ImageView mCocktailImageView;
         @BindView(R.id.cocktailNameTextView) TextView mNameTextView;
+        @BindView(R.id.typeTextView) TextView mTypeTextView;
         @BindView(R.id.categoryTextView) TextView mCategoryTextView;
-
         private Context mContext;
         public myHolder(@NonNull View itemView) {
             super(itemView);
@@ -56,8 +57,11 @@ public class CocktailListAdapter extends RecyclerView.Adapter<CocktailListAdapte
             mContext = itemView.getContext();
         }
 
-
         public void bindCocktail(Drink drink) {
+            mNameTextView.setText(drink.getStrDrink());
+           mTypeTextView.setText(drink.getStrAlcoholic());
+            mCategoryTextView.setText(drink.getStrCategory());
+            Picasso.get().load(drink.getStrDrinkThumb()).into(mCocktailImageView);
 
         }
     }
