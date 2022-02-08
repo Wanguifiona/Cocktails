@@ -9,12 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="purple">#672073</color>
     <color name="orange">#FF5722</color>
+    <color name="orange_200">#FF5722</color>
+    <color name="lilac">#641732</color>
+    <color name="red">#6A0505</color>
+    <color name="test">#910738</color>
 </resources>
-<!--<color name="colorPrimary">#FF5722</color>-->
-<!--<color name="colorPrimaryDark">#E64A19</color>-->
-<!--<color name="colorPrimaryLight">#FFCCBC</color>-->
-<!--<color name="colorTextIcons">#FFFFFF</color>-->
-<!--<color name="colorAccent">#009688</color>-->
-<!--<color name="colorPrimaryText">#1F1E1E</color>-->
-<!--<color name="colorSecondaryText">#727272</color>-->
-<!--<color name="colorDivider">#B6B6B6</color>-->

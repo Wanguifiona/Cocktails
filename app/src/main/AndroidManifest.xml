@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.moringaschool.cocktails">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,23 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cocktails">
         <activity
+            android:name=".CocktailDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".CocktailsActivity"
-            android:exported="false" >
+            android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.cocktails.MainActivity">
-            </meta-data>
+                android:value="com.moringaschool.cocktails.MainActivity"></meta-data>
         </activity>
-
         <activity
             android:name=".AboutActivity"
-            android:exported="false" >
+            android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.cocktails.MainActivity">
-            </meta-data>
+                android:value="com.moringaschool.cocktails.MainActivity"></meta-data>
         </activity>
-
         <activity
             android:name=".MainActivity"
             android:exported="true">
