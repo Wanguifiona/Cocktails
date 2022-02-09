@@ -15,7 +15,7 @@
             android:name=".CocktailDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".CocktailsActivity"
+            android:name=".CocktailListActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

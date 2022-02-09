@@ -76,7 +76,18 @@
                 android:paddingLeft="30dp"
                 android:paddingTop="20dp"
                 android:paddingRight="30dp">
-
+                <TextView
+                    android:id="@+id/measurementsTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:drawableLeft="@drawable/ic_baseline_trending_up_white_18dp"
+                    android:drawablePadding="4dp"
+                    android:gravity="left"
+                    android:text="Measurements"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
                 <TextView
                     android:id="@+id/ingredientsTextView"
                     android:layout_width="wrap_content"
@@ -84,11 +95,13 @@
                     android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/ic_baseline_menu_book_white_18dp"
                     android:drawablePadding="4dp"
-                    android:gravity="center"
+                    android:gravity="left"
                     android:text="Ingredients"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />
+
+
 
                 <TextView
                     android:id="@+id/instructionsTextView"
@@ -97,21 +110,8 @@
                     android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/ic_baseline_instructions_white_18dp"
                     android:drawablePadding="4dp"
-                    android:gravity="center_vertical"
+                    android:gravity="left"
                     android:text="Instructions"
-                    android:textColor="@color/white"
-                    android:textSize="15sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/measurementsTextView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:drawableLeft="@drawable/ic_baseline_trending_up_white_18dp"
-                    android:drawablePadding="4dp"
-                    android:gravity="center"
-                    android:text="Measurements"
                     android:textColor="@color/white"
                     android:textSize="15sp"
                     android:textStyle="bold" />
@@ -123,7 +123,7 @@
                     android:layout_marginBottom="10dp"
                     android:drawableLeft="@drawable/ic_baseline_wine_bar_white_18dp"
                     android:drawablePadding="4dp"
-                    android:gravity="center_vertical"
+                    android:gravity="left"
                     android:text="Glass"
                     android:textColor="@color/white"
                     android:textSize="15sp"

@@ -1,6 +1,7 @@
 
 package com.moringaschool.cocktails.models;
 
+import java.io.Serializable;
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -9,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
 
 @Parcel
-public class DrinksResponse {
+public class DrinksResponse implements Serializable {
 
     @SerializedName("drinks")
     @Expose

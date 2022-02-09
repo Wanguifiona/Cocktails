@@ -8,12 +8,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.moringaschool.cocktails.adapters.CocktailListAdapter;
 import com.moringaschool.cocktails.models.Drink;
@@ -22,7 +18,6 @@ import com.moringaschool.cocktails.network.CocktailsApi;
 import com.moringaschool.cocktails.network.CocktailsClient;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -31,8 +26,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CocktailsActivity extends AppCompatActivity {
-    private static final String TAG = CocktailsActivity.class.getSimpleName();
+public class CocktailListActivity extends AppCompatActivity {
+    private static final String TAG = CocktailListActivity.class.getSimpleName();
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
     @BindView(R.id.recyclerView) RecyclerView mRecyclerView;
@@ -84,7 +79,7 @@ public class CocktailsActivity extends AppCompatActivity {
     }
 
     private void startRecyclerView(List<Drink> cocktails) {
-            CocktailListAdapter cocktailListAdapter = new CocktailListAdapter(CocktailsActivity.this, cocktails);
+            CocktailListAdapter cocktailListAdapter = new CocktailListAdapter(CocktailListActivity.this, cocktails);
             mRecyclerView.setAdapter(cocktailListAdapter);
             mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 

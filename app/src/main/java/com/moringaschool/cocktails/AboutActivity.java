@@ -35,7 +35,7 @@ public class AboutActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         if (v == mFindCocktailsButton) {
             String cocktails = mCocktailsEditText.getText().toString();
-            Intent intent = new Intent(AboutActivity.this, CocktailsActivity.class);
+            Intent intent = new Intent(AboutActivity.this, CocktailListActivity.class);
             intent.putExtra("cocktails", cocktails);
             startActivity(intent);
 //                    Toast.makeText(AboutActivity.this, name, Toast.LENGTH_LONG).show();
