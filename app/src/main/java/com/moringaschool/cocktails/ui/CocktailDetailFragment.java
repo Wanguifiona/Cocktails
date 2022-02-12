@@ -1,4 +1,4 @@
-package com.moringaschool.cocktails;
+package com.moringaschool.cocktails.ui;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.moringaschool.cocktails.R;
 import com.moringaschool.cocktails.models.Drink;
 import com.squareup.picasso.Picasso;
 

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "223587323813",
+    "project_id": "cocktails-89033",
+    "storage_bucket": "cocktails-89033.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223587323813:android:37ad159f4e6a41b3a6e24c",
+        "android_client_info": {
+          "package_name": "com.moringaschool.cocktails"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223587323813-ntldrql2dhhj64sb353fcacmprfnrgkd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.moringaschool.cocktails",
+            "certificate_hash": "86fe433f4af3d3708350cdbc0709f383ea2bf05e"
+          }
+        },
+        {
+          "client_id": "223587323813-56i2hqs8ogdnevo6anpfchg2psf36lrj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPop-GD3jcScMse4yBPkCgN2aEfhBRXng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223587323813-56i2hqs8ogdnevo6anpfchg2psf36lrj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

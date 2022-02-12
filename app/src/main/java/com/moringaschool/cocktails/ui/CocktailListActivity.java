@@ -1,16 +1,20 @@
-package com.moringaschool.cocktails;
+package com.moringaschool.cocktails.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.moringaschool.cocktails.Constants;
+import com.moringaschool.cocktails.R;
 import com.moringaschool.cocktails.adapters.CocktailListAdapter;
 import com.moringaschool.cocktails.models.Drink;
 import com.moringaschool.cocktails.models.DrinksResponse;
@@ -27,6 +31,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CocktailListActivity extends AppCompatActivity {
+    private SharedPreferences mSharedPreferences;
+    private String mRecentCocktails;
+
     private static final String TAG = CocktailListActivity.class.getSimpleName();
     @BindView(R.id.errorTextView) TextView mErrorTextView;
     @BindView(R.id.progressBar) ProgressBar mProgressBar;
@@ -45,7 +52,7 @@ public class CocktailListActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String cocktail = intent.getStringExtra("cocktails");
+        String cocktail = intent.getStringExtra("strDrink");
 
 
         CocktailsApi client = CocktailsClient.getClient();
@@ -76,6 +83,10 @@ public class CocktailListActivity extends AppCompatActivity {
             }
 
         });
+
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentCocktails = mSharedPreferences.getString(Constants.PREFERENCES_COCKTAIL_KEY, null);
+        String cocktails = mRecentCocktails;
     }
 
     private void startRecyclerView(List<Drink> cocktails) {

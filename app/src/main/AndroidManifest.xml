@@ -12,24 +12,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Cocktails">
         <activity
-            android:name=".CocktailDetailActivity"
+            android:name=".ui.CocktailDetailActivity"
             android:exported="false" />
         <activity
-            android:name=".CocktailListActivity"
+            android:name=".ui.CocktailListActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.cocktails.MainActivity"></meta-data>
+                android:value="com.moringaschool.cocktails.ui.MainActivity"></meta-data>
         </activity>
         <activity
-            android:name=".AboutActivity"
+            android:name=".ui.AboutActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.cocktails.MainActivity"></meta-data>
+                android:value="com.moringaschool.cocktails.ui.MainActivity"></meta-data>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

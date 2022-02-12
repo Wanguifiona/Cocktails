@@ -1,11 +1,12 @@
-package com.moringaschool.cocktails;
+package com.moringaschool.cocktails.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import com.moringaschool.cocktails.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

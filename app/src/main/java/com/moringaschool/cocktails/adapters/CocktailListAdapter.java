@@ -11,7 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.moringaschool.cocktails.CocktailDetailActivity;
+import com.moringaschool.cocktails.ui.CocktailDetailActivity;
 import com.moringaschool.cocktails.R;
 import com.moringaschool.cocktails.models.Drink;
 import com.squareup.picasso.Picasso;
