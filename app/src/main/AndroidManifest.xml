@@ -19,14 +19,14 @@
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.cocktails.ui.MainActivity"></meta-data>
+                android:value="com.moringaschool.cocktails.ui.MainActivity" />
         </activity>
         <activity
             android:name=".ui.AboutActivity"
             android:exported="false">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.moringaschool.cocktails.ui.MainActivity"></meta-data>
+                android:value="com.moringaschool.cocktails.ui.MainActivity" />
         </activity>
         <activity
             android:name=".ui.MainActivity"

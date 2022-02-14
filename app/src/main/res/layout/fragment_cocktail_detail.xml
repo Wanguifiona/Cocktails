@@ -29,35 +29,35 @@
 
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cocktail Name"
             android:id="@+id/cocktailNameTextView"
-            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:text="Cocktail Name"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Alcoholic"
             android:id="@+id/categoryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignTop="@+id/cocktailNameTextView"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:text="Alcoholic"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tailTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cocktail"
-            android:id="@+id/tailTextView"
             android:layout_below="@+id/cocktailNameTextView"
-            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:text="Cocktail"
             android:textColor="@color/black"
             android:textStyle="italic" />
         </RelativeLayout>
