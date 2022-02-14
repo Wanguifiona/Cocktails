@@ -31,8 +31,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CocktailListActivity extends AppCompatActivity {
-    private SharedPreferences mSharedPreferences;
-    private String mRecentCocktails;
+//    private SharedPreferences mSharedPreferences;
+//    private String mRecentCocktails;
 
     private static final String TAG = CocktailListActivity.class.getSimpleName();
     @BindView(R.id.errorTextView) TextView mErrorTextView;
@@ -52,7 +52,7 @@ public class CocktailListActivity extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String cocktail = intent.getStringExtra("strDrink");
+        String cocktail = intent.getStringExtra("cocktails");
 
 
         CocktailsApi client = CocktailsClient.getClient();
@@ -84,9 +84,9 @@ public class CocktailListActivity extends AppCompatActivity {
 
         });
 
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mRecentCocktails = mSharedPreferences.getString(Constants.PREFERENCES_COCKTAIL_KEY, null);
-        String cocktails = mRecentCocktails;
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentCocktails = mSharedPreferences.getString(Constants.PREFERENCES_COCKTAIL_KEY, null);
+//        String cocktails = intent.getStringExtra("cocktails");
     }
 
     private void startRecyclerView(List<Drink> cocktails) {

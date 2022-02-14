@@ -6,12 +6,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.moringaschool.cocktails.Constants;
 import com.moringaschool.cocktails.R;
 import com.moringaschool.cocktails.models.Drink;
 import com.squareup.picasso.Picasso;
@@ -19,7 +23,7 @@ import com.squareup.picasso.Picasso;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class CocktailDetailFragment extends Fragment {
+public class CocktailDetailFragment extends Fragment implements View.OnClickListener {
     Drink mCocktails;
     @BindView(R.id.cocktailNameTextView) TextView mCocktailNameTextView;
     @BindView(R.id.cocktailImageView) ImageView mCocktailImageView;
@@ -28,6 +32,7 @@ public class CocktailDetailFragment extends Fragment {
     @BindView(R.id.instructionsTextView) TextView mInstructionsTextView;
     @BindView(R.id.measurementsTextView) TextView mMeasurementsTextView;
     @BindView(R.id.glassTextView) TextView mGlassTextView;
+    @BindView(R.id.saveCocktailButton) TextView mSaveCocktailButton;
 
 
 
@@ -45,6 +50,9 @@ public class CocktailDetailFragment extends Fragment {
         mInstructionsTextView.setText(mCocktails.getStrInstructions());
         mMeasurementsTextView.setText(mCocktails.getStrMeasure1()+ "\n" + mCocktails.getStrMeasure2());
         mGlassTextView.setText(mCocktails.getStrGlass());
+
+        mSaveCocktailButton.setOnClickListener(this);
+
         return view;
 
     }
@@ -55,5 +63,15 @@ public class CocktailDetailFragment extends Fragment {
         Bundle bundle = getArguments();
         mCocktails = (Drink) bundle.getSerializable("cocktail");
 
+    }
+    @Override
+    public void onClick(View v) {
+        if (v == mSaveCocktailButton) {
+        DatabaseReference cocktailRef = FirebaseDatabase
+                .getInstance()
+                .getReference(Constants.FIREBASE_CHILD_COCKTAILS);
+            cocktailRef.push().setValue(mCocktails);
+        Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+    }
     }
 }

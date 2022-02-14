@@ -132,12 +132,12 @@
             </LinearLayout>
 
             <Button
+                android:id="@+id/saveCocktailButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Save Cocktail"
-                android:id="@+id/saveCocktailButton"
                 android:layout_alignParentBottom="true"
                 android:backgroundTint="@color/lilac"
+                android:text="Save Cocktail"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
         </RelativeLayout>
