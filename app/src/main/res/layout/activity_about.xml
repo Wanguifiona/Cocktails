@@ -18,7 +18,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/cocktailsEditText"
+        android:layout_above="@+id/findCocktailsButton"
         android:layout_below="@+id/appNameTextView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -30,16 +30,16 @@
         android:textSize="20sp" />
 
 
-    <EditText
-        android:id="@+id/cocktailsEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/findCocktailsButton"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:background="@color/white"
-        android:hint="Cocktail Search"
-        android:padding="5dp" />
+<!--    <EditText-->
+<!--        android:id="@+id/cocktailsEditText"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_above="@+id/findCocktailsButton"-->
+<!--        android:layout_centerHorizontal="true"-->
+<!--        android:layout_marginBottom="10dp"-->
+<!--        android:background="@color/white"-->
+<!--        android:hint="Cocktail Search"-->
+<!--        android:padding="5dp" />-->
 
     <Button
         android:id="@+id/findCocktailsButton"
@@ -47,9 +47,24 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="55dp"
         android:backgroundTint="@color/purple"
         android:text="Find Cocktails "
+        android:layout_above="@+id/savedCocktailsButton"
+        android:visibility="visible"
         android:textAllCaps="false"
         android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/savedCocktailsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/purple"
+        android:text="My Saved Cocktails"
+        android:textColor="@color/white"
+        android:visibility="visible" />
+
 </RelativeLayout>

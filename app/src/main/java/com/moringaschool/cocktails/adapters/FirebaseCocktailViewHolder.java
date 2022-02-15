@@ -36,11 +36,11 @@ public class FirebaseCocktailViewHolder extends RecyclerView.ViewHolder implemen
         itemView.setOnClickListener(this);
     }
 
-    public void bidCocktail(Drink cocktail) {
+    public void bindCocktail(Drink cocktail) {
         ImageView cocktailImageView = (ImageView) mView.findViewById(R.id.cocktailImageView);
         TextView nameTextView = (TextView) mView.findViewById(R.id.cocktailNameTextView);
         TextView categoryTextView = (TextView) mView.findViewById(R.id.categoryTextView);
-        TextView tailTextView = (TextView) mView.findViewById(R.id.tailTextView);
+        TextView tailTextView = (TextView) mView.findViewById(R.id.typeTextView);
 
         Picasso.get().load(cocktail.getStrDrinkThumb()).into(cocktailImageView);
 

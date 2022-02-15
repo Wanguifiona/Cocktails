@@ -9,8 +9,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.moringaschool.cocktails.Constants;
@@ -31,8 +35,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class CocktailListActivity extends AppCompatActivity {
-//    private SharedPreferences mSharedPreferences;
-//    private String mRecentCocktails;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private String mRecentCocktails;
 
     private static final String TAG = CocktailListActivity.class.getSimpleName();
     @BindView(R.id.errorTextView) TextView mErrorTextView;
@@ -54,39 +59,45 @@ public class CocktailListActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String cocktail = intent.getStringExtra("cocktails");
 
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mRecentCocktails = mSharedPreferences.getString(Constants.PREFERENCES_COCKTAIL_KEY, null);
 
-        CocktailsApi client = CocktailsClient.getClient();
-        Call<DrinksResponse> call = client.getDrinks();
+        if(mRecentCocktails != null) {
+            fetchCocktails(mRecentCocktails);
+        }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search, menu);
+        ButterKnife.bind(this);
 
-        call.enqueue(new Callback<DrinksResponse>() {
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        mEditor = mSharedPreferences.edit();
+
+        MenuItem menuItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onResponse(Call<DrinksResponse> call, Response<DrinksResponse> response) {
-                hideProgressBar();
-                if(response.isSuccessful()){
-                    List<Drink> allDrinks = response.body().getDrinks();
-                    for(Drink drink : allDrinks){
-                        Log.d(TAG, "onResponse: " + drink.getStrDrink());
-                    }
-                    cocktails.addAll(allDrinks);
-
-                    startRecyclerView(cocktails);
-                    showCocktails();
-                } else {
-                    showUnsuccessfulMessage();
-                }
+            public boolean onQueryTextSubmit(String cocktail) {
+                addToSharedPreferences(cocktail);
+                fetchCocktails(cocktail);
+                return false;
             }
             @Override
-            public void onFailure(Call<DrinksResponse> call, Throwable t) {
-                Log.e(TAG, "onFailure: ",t );
-                hideProgressBar();
-                showFailureMessage();
+            public boolean onQueryTextChange(String cocktail) {
+                return false;
             }
-
         });
 
-//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-//        mRecentCocktails = mSharedPreferences.getString(Constants.PREFERENCES_COCKTAIL_KEY, null);
-//        String cocktails = intent.getStringExtra("cocktails");
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 
     private void startRecyclerView(List<Drink> cocktails) {
@@ -112,5 +123,40 @@ public class CocktailListActivity extends AppCompatActivity {
 
     private void hideProgressBar() {
         mProgressBar.setVisibility(View.GONE);
+    }
+
+    private void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_COCKTAIL_KEY, location).apply();
+    }
+    private void fetchCocktails(String Cocktail){
+        CocktailsApi client = CocktailsClient.getClient();
+        Call<DrinksResponse> call = client.getDrinks();
+
+        call.enqueue(new Callback<DrinksResponse>() {
+            @Override
+            public void onResponse(Call<DrinksResponse> call, Response<DrinksResponse> response) {
+                hideProgressBar();
+                if (response.isSuccessful()) {
+                    List<Drink> allDrinks = response.body().getDrinks();
+                    for (Drink drink : allDrinks) {
+                        Log.d(TAG, "onResponse: " + drink.getStrDrink());
+                    }
+                    cocktails.addAll(allDrinks);
+
+                    startRecyclerView(cocktails);
+                    showCocktails();
+                } else {
+                    showUnsuccessfulMessage();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DrinksResponse> call, Throwable t) {
+                Log.e(TAG, "onFailure: ", t);
+                hideProgressBar();
+                showFailureMessage();
+            }
+
+        });
     }
 }
