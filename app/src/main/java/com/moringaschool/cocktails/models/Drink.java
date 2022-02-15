@@ -166,6 +166,7 @@ public class Drink implements Serializable {
     @SerializedName("dateModified")
     @Expose
     private String dateModified;
+    private String pushId;
 
     /**
      * No args constructor for use in serialization
@@ -691,4 +692,12 @@ public class Drink implements Serializable {
         this.dateModified = dateModified;
     }
 
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
+    }
 }
+
