@@ -9,7 +9,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/test">
+        android:background="@color/peach">
 
     <ImageView
         android:layout_width="match_parent"
@@ -136,7 +136,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
-                android:backgroundTint="@color/lilac"
+                android:backgroundTint="@color/peach"
                 android:text="Save Cocktail"
                 android:textColor="@color/white"
                 android:textSize="15sp" />
