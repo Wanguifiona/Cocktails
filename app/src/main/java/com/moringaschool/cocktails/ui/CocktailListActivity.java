@@ -82,8 +82,8 @@ public class CocktailListActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String cocktail) {
                 addToSharedPreferences(cocktail);
-                fetchCocktails(cocktail);
-                return false;
+                search(Character.toString(cocktail.charAt(0)));
+                return true;
             }
             @Override
             public boolean onQueryTextChange(String cocktail) {
@@ -141,6 +141,39 @@ public class CocktailListActivity extends AppCompatActivity {
                     for (Drink drink : allDrinks) {
                         Log.d(TAG, "onResponse: " + drink.getStrDrink());
                     }
+                    cocktails.addAll(allDrinks);
+
+                    startRecyclerView(cocktails);
+                    showCocktails();
+                } else {
+                    showUnsuccessfulMessage();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DrinksResponse> call, Throwable t) {
+                Log.e(TAG, "onFailure: ", t);
+                hideProgressBar();
+                showFailureMessage();
+            }
+
+        });
+    }
+
+    private void search(String character){
+        CocktailsApi client = CocktailsClient.getClient();
+        Call<DrinksResponse> call = client.getSearchDrinks(character);
+
+        call.enqueue(new Callback<DrinksResponse>() {
+            @Override
+            public void onResponse(Call<DrinksResponse> call, Response<DrinksResponse> response) {
+                hideProgressBar();
+                if (response.isSuccessful()) {
+                    List<Drink> allDrinks = response.body().getDrinks();
+                    for (Drink drink : allDrinks) {
+                        Log.d(TAG, "onResponse: " + drink.getStrDrink());
+                    }
+                    cocktails.clear();
                     cocktails.addAll(allDrinks);
 
                     startRecyclerView(cocktails);
