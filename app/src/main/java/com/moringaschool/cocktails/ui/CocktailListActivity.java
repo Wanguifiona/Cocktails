@@ -13,6 +13,9 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -66,6 +69,8 @@ public class CocktailListActivity extends AppCompatActivity {
             fetchCocktails(mRecentCocktails);
         }
     }
+//    Animation animation = AnimationUtils.loadAnimation(this,R.anim.layout_animation);
+//        controller.start();
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

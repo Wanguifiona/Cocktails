@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -46,15 +48,33 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         };
     }
 
+
     @Override
     public void onClick(View v) {
         if (v == mStartButton) {
-            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
-            startActivity(intent);
+            Mixed();
+            Animation animation = AnimationUtils.loadAnimation(MainActivity.this,R.anim.zoomout);
+            mStartButton.startAnimation(animation);
+
+            Handler hd = new Handler();
+                hd.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                        startActivity(intent);
+                    }
+                }, 2000);
+
         }
-        Animation animation = AnimationUtils.loadAnimation(MainActivity.this,R.anim.zoomout);
-        mStartButton.startAnimation(animation);
     }
+
+    private void Mixed() {
+        ImageView image = (ImageView)findViewById(R.id.imageView);
+        Animation animation = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.mixed_anim);
+        image.startAnimation(animation);
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

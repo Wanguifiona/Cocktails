@@ -99,7 +99,7 @@ public class CocktailDetailFragment extends Fragment implements View.OnClickList
 
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
-        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.mixed_anim);
+        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.sample_anim);
         mSaveCocktailButton.startAnimation(animation);
     }
 }
