@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -97,5 +99,7 @@ public class CocktailDetailFragment extends Fragment implements View.OnClickList
 
             Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
         }
+        Animation animation = AnimationUtils.loadAnimation(getContext(),R.anim.mixed_anim);
+        mSaveCocktailButton.startAnimation(animation);
     }
 }
